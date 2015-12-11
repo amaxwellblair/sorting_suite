@@ -1,6 +1,8 @@
+$LOAD_PATH.unshift(__dir__)
 require 'pry'
+require 'sort'
 
-class InsertionSort
+class InsertionSort < Sort
   attr_accessor :input_array
 
   def sort(input_array)
@@ -8,51 +10,23 @@ class InsertionSort
     if data_valid?
       auxiliary_methods
     else
-      #insert sorting code here
-    end
-  end
-
-  def not_sorted?(array = input_array)
-    array.each.with_index do |unit, i|
-      if !array[i+1].nil?
-         return true if unit > array[i+1]
+      sorting_array = input_array
+      complete_array = [sorting_array.shift]
+      sorting_array.each do |unsort|
+        inserted = false
+        i = 0
+        while inserted == false
+          if unsort <= complete_array[i]
+            complete_array.insert(i, unsort)
+            inserted = true
+          elsif complete_array[i+1].nil?
+            complete_array.insert(i+1, unsort)
+            inserted = true
+          end
+          i += 1
+        end
       end
-    end
-    return false
-  end
-
-  def data_valid?(array = input_array)
-    if nothing?(array)
-      true
-    elsif single_element?(array)
-      true
-    elsif just_nil?
-      true
-    else
-      false
+      return complete_array
     end
   end
-
-  def auxiliary_methods(array = input_array)
-    if nothing?(array)
-      []
-    elsif single_element?(array)
-      array
-    elsif just_nil?
-      nil
-    end
-  end
-
-  def nothing?(array = input_array)
-    array.length == 0
-  end
-
-  def single_element?(array = input_array)
-    array.length == 1 && array.first != nil
-  end
-
-  def just_nil?(array = input_array)
-    array.any?{|unit| unit == nil}
-  end
-
 end
