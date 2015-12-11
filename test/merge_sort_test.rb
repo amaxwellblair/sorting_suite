@@ -15,7 +15,6 @@ attr_accessor :sorter
   end
 
   def test_sort_empty
-    skip
     assert_equal [], sorter.sort([])
   end
 
@@ -28,17 +27,14 @@ attr_accessor :sorter
   end
 
   def test_sort_two
-    skip
     assert_equal [2,3], sorter.sort([3,2])
   end
 
   def test_sort_three
-    skip
-    assert_equal [1,3,10], sorter.sort([3,10,1])
+    assert_equal [1,3,4,10], sorter.sort([3,10,1,4])
   end
 
   def test_sort_alot
-    skip
     assert_equal [1,2,3,4,5,6,7,8,9,10], sorter.sort([10,8,1,2,3,5,7,6,9,4])
   end
 
