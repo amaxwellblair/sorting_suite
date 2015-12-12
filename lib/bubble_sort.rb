@@ -16,7 +16,7 @@ class BubbleSort < Sort
 
   def bubble_sort(array = input_array)
     while not_sorted?(array)
-      array.each.with_index do |unit, i|
+      array.length.times do |i|
         left, right = array[i], array[i+1]
         if swap?(left, right)
           array[i], array[i+1] = right, left
