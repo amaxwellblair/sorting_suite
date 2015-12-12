@@ -12,7 +12,7 @@ class Sort
     return false
   end
 
-  def data_valid?(array = input_array)
+  def data_invalid?(array = input_array)
     if nothing?(array)
       true
     elsif single_element?(array)

@@ -7,7 +7,7 @@ class InsertionSort < Sort
 
   def sort(input_array)
     @input_array = input_array
-    if data_valid?
+    if data_invalid?
       auxiliary_methods
     else
       sorting_array = input_array

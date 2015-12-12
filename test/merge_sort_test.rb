@@ -38,18 +38,19 @@ attr_accessor :sorter
     assert_equal [1,2,3,4,5,6,7,8,9,10], sorter.sort([10,8,1,2,3,5,7,6,9,4])
   end
 
+  def test_sort_alot_two_equal
+    assert_equal [1,1,3,4,5,6,7,8,9,10], sorter.sort([10,1,8,1,3,5,7,6,9,4])
+  end
+
   def test_sort_alpha_three
-    skip
     assert_equal %w(a b c d e), sorter.sort(%w(b a c e d))
   end
 
   def test_not_sort_true
-    skip
     assert sorter.not_sorted?([10,8,1,2,3,5,7,6,9,4])
   end
 
   def test_not_sort_false
-    skip
     refute sorter.not_sorted?([1,2,3,4,5,6])
   end
 
