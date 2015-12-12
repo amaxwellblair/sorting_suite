@@ -10,17 +10,20 @@ class BubbleSort < Sort
     if data_invalid?
       auxiliary_methods
     else
-      sorting_array = input_array
-      while not_sorted?(sorting_array)
-        sorting_array.each.with_index do |unit, i|
-          left, right = sorting_array[i], sorting_array[i+1]
-          if swap?(left, right)
-            sorting_array[i], sorting_array[i+1] = right, left
-          end
+      bubble_sort
+    end
+  end
+
+  def bubble_sort(array = input_array)
+    while not_sorted?(array)
+      array.each.with_index do |unit, i|
+        left, right = array[i], array[i+1]
+        if swap?(left, right)
+          array[i], array[i+1] = right, left
         end
       end
-      return sorting_array
     end
+    return array
   end
 
   def swap?(left, right)

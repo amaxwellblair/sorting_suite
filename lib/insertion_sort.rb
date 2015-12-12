@@ -15,24 +15,17 @@ class InsertionSort < Sort
   end
 
   def insert_sort(array = input_array)
-    sorting_array = array
-    complete_array = [sorting_array.shift]
-    sorting_array.each do |unsort|
-      inserted = false
-      i = 0
-      while inserted == false
-        if unsort <= complete_array[i]
-          complete_array.insert(i, unsort)
-          inserted = true
-        elsif complete_array[i+1].nil?
-          complete_array.insert(i+1, unsort)
-          inserted = true
-        end
-        i += 1
+    complete_array = [array.shift]
+    array.each do |unsorted|
+      index = nil
+      complete_array.each.with_index do |sorted, i|
+        unsorted <= sorted ? index = i : nil
+        break if index != nil
       end
+      index = complete_array.length if index.nil?
+      complete_array.insert(index, unsorted)
     end
     complete_array
   end
-
 
 end
