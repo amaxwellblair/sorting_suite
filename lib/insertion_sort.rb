@@ -10,23 +10,29 @@ class InsertionSort < Sort
     if data_invalid?
       auxiliary_methods
     else
-      sorting_array = input_array
-      complete_array = [sorting_array.shift]
-      sorting_array.each do |unsort|
-        inserted = false
-        i = 0
-        while inserted == false
-          if unsort <= complete_array[i]
-            complete_array.insert(i, unsort)
-            inserted = true
-          elsif complete_array[i+1].nil?
-            complete_array.insert(i+1, unsort)
-            inserted = true
-          end
-          i += 1
-        end
-      end
-      return complete_array
+      insert_sort
     end
   end
+
+  def insert_sort(array = input_array)
+    sorting_array = array
+    complete_array = [sorting_array.shift]
+    sorting_array.each do |unsort|
+      inserted = false
+      i = 0
+      while inserted == false
+        if unsort <= complete_array[i]
+          complete_array.insert(i, unsort)
+          inserted = true
+        elsif complete_array[i+1].nil?
+          complete_array.insert(i+1, unsort)
+          inserted = true
+        end
+        i += 1
+      end
+    end
+    complete_array
+  end
+
+
 end
