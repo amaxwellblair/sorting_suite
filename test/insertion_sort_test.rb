@@ -50,4 +50,9 @@ attr_accessor :sorter
     refute sorter.not_sorted?([1,2,3,4,5,6])
   end
 
+  def test_reverse
+    x = (1..10).to_a.reverse
+    assert_equal (1..10).to_a, sorter.sort(x)
+  end
+
 end
