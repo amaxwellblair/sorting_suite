@@ -16,31 +16,35 @@ class QuickSort < Sort
 
   def quick_sort(array = input_array, sort = [])
     if array.length > 1
-      pivot = array[array.length/2]
-      i = 0
-      j = array.length - 1
-      while i <= j
-        if (array[i] >= pivot) && (array[j] <= pivot)
-          swap = array[i]
-          array[i] = array[j]
-          array[j] = swap
-          i += 1
-          j -= 1
-        elsif array[i] > pivot
-          j -= 1
-        elsif array[j] < pivot
-          i += 1
-        else
-          i += 1
-          j -= 1
-        end
-      end
-      quick_sort(array[0..i-1], sort)
-      quick_sort(array[i..-1], sort)
+      partition(array, sort)
     else
       sort.push(array.first)
     end
     sort
+  end
+
+  def partition(array, sort = [])
+    pivot = array[array.length/2]
+    i = 0
+    j = array.length - 1
+    while i <= j
+      if (array[i] >= pivot) && (array[j] <= pivot)
+        swap = array[i]
+        array[i] = array[j]
+        array[j] = swap
+        i += 1
+        j -= 1
+      elsif array[i] > pivot
+        j -= 1
+      elsif array[j] < pivot
+        i += 1
+      else
+        i += 1
+        j -= 1
+      end
+    end
+    quick_sort(array[0..i-1], sort)
+    quick_sort(array[i..-1], sort)
   end
 
 end
